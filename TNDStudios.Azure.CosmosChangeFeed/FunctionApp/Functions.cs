@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
+
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace FunctionApp
 {
@@ -14,7 +13,7 @@ namespace FunctionApp
             databaseName: "Database",
             collectionName: "Container",
             ConnectionStringSetting = "CosmosDB",
-            CreateLeaseCollectionIfNotExists = true,
+            CreateLeaseCollectionIfNotExists = true, 
             LeaseCollectionName = "leases")]IReadOnlyList<Document> input, ILogger log)
         {
             if (input != null && input.Count > 0)
