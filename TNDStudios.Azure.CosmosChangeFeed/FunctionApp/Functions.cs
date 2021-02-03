@@ -12,8 +12,9 @@ namespace FunctionApp
         [FunctionName("CosmosChange")]
         public static void Run([CosmosDBTrigger(
             databaseName: "Database",
-            collectionName: "Collection",
+            collectionName: "Container",
             ConnectionStringSetting = "CosmosDB",
+            CreateLeaseCollectionIfNotExists = true,
             LeaseCollectionName = "leases")]IReadOnlyList<Document> input, ILogger log)
         {
             if (input != null && input.Count > 0)
